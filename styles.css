@@ -1,0 +1,219 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Lora', serif;
+    background: url('static/images/bg.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header Styling */
+header {    
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffcc00;
+    border-bottom: solid 3px #ffcc00;
+    text-align: center;
+    padding: 20px 0;
+}
+.title {
+    margin: 0;
+    font-size: 60px;
+    font-style: italic; 
+}
+.tagline {
+    margin: 0;
+    font-size: 22px;
+    font-style: oblique;
+}
+
+/* 🎯 Centered Block for Dropdown Fields */
+.selection-block {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px; /* Kam padding takreban 30px se 20px ki */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: white;
+    max-width: 480px; 
+    margin: 20px auto;  
+    position: relative;
+    top: -100px; /*  upar shift krne ke liye  */
+}
+
+
+
+/* Home and Logout buttons - Dark Red */
+.dropdown-menu li:first-child a,
+.dropdown-menu li:last-child a {
+    color: rgb(235, 66, 66); 
+    font-weight: bold;
+}
+
+
+.selection-block label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.selection-block select {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin: 10px 0;
+    background: #222;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+    cursor: pointer;
+}
+
+/* 🔥 Slideshow Container */
+.slideshow-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slideshow-container img.active {
+    opacity: 1;
+}
+
+/* 🔘 Predict Button */
+.predict-btn {
+    background-color: #ffcc00;
+    color: black;
+    border: 2px solid black;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.predict-btn:hover {
+    background-color: orange;
+    color: white;
+}
+
+/* ✅ Result Block (Crime Prediction Display) */
+.result-block {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    text-align: left;
+    color: white;
+    max-width: 480px;
+    margin: 30px auto;
+    font-size: 18px;
+}
+
+.result-block p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.result-block p span {
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+/* 🎨 General Button Styling */
+.button {
+    text-align: center;
+    margin: 20px 0;
+}
+.btn {
+    padding: 12px;
+    width: 180px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #ffcc00;
+    color: black;
+    border: solid 2px #ffcc00;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn:hover {   
+    background-color: #000;
+    color: #ffcc00;
+    border: solid 2px #ffcc00; 
+}
+
+/* 🚀 Logout Button */
+.btn-logout {
+    background-color: red;
+    color: white;
+    border: solid 2px red;
+    cursor: pointer;
+}
+.btn-logout:hover {
+    background-color: darkred;
+    border: solid 2px darkred;
+}
+/* 📌 Footer */
+.footer {
+    width: 100%;
+    padding: 8px;  /* Pehle 12px/20px tha, ab 8px kiya taaki chhota ho jaye */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    font-size: 14px; /* Pehle 18px tha, ab thoda chhota kiya */
+}
+/* Developer text aur icons ke beech ka gap kam karna */
+#developer {
+    font-weight: bold;
+    margin-bottom: 2px;  /* Pehle 4px tha, ab 2px kiya */
+}
+
+/* Icons ka margin aur kam kiya */
+.footer img {
+    width: 30px;  
+    height: auto;
+    margin: 2px;  /* Pehle 4px tha, ab 2px kiya taaki aur paas aaye */
+}
+
+
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 10px; /* Icons ke beech space */
+}
+
+/* 📱 Mobile Responsive */
+@media screen and (max-width: 600px) {
+    .title {
+        font-size: 45px;
+    }
+    .tagline {
+        font-size: 18px;
+    }
+    .selection-block, .result-block {
+        max-width: 90%;
+    }
+    .btn {
+        width: 100%;
+    }
+    .footer {
+        font-size: 14px;
+    }
+}
