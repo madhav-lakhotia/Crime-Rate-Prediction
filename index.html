@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDICT CRIME TREND</title>
+    <link rel="icon" href="static/images/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: url('static/images/stars.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+    
+        .selection-block {
+            background: rgba(32, 28, 28, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 40vw;
+            margin: 10vh auto;
+        }
+    
+        select, .btn {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    
+        #predict_button {
+            background-color: yellow; 
+            color: black;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    
+        .menu-icon {
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background: none;
+            border: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 50px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            padding: 10px;
+            list-style: none;
+            z-index: 10;
+        }
+
+        .dropdown-menu li {
+            padding: 8px;
+        }
+
+        .dropdown-menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title text-center text-light mt-3">PREDICT CRIME TREND</h1>
+        <h2 class="tagline text-center text-light">Unlock safety: Reduce crime rate together</h2>
+    </header>
+
+    <nav class="d-flex justify-content-between align-items-center p-3">
+        <a href="/"> <img src="static/images/logo.png" alt="Logo"> </a>
+        <button class="menu-icon" onclick="toggleMenu()">&#9776;</button>
+        <ul class="dropdown-menu" id="menuDropdown">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="mailto:predictcrimetrend@gmail.com">Support</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="selection-block p-4">
+        <form id="predictForm" action="/predict" method="POST">
+            <label class="text-light">Select City Name</label>
+            <select name="city" class="form-control">
+                <option value="0">Ahmedabad</option>
+                <option value="1">Bengaluru</option>
+                <option value="2">Chennai</option>
+                <option value="3">Coimbatore</option>
+                <option value="4">Delhi</option>
+                <option value="5">Ghaziabad</option>
+                <option value="6">Hyderabad</option>
+                <option value="7">Indore</option>
+                <option value="8">Jaipur</option>
+                <option value="9">Kanpur</option>
+                <option value="10">Kochi</option>
+                <option value="11">Kolkata</option>
+                <option value="12">Kozhikode</option>
+                <option value="13">Lucknow</option>
+                <option value="14">Mumbai</option>
+                <option value="15">Nagpur</option>
+                <option value="16">Patna</option>
+                <option value="17">Pune</option>
+                <option value="18">Surat</option>
+            </select>
+
+            <label class="text-light">Select Crime Type</label>
+            <select name="crime" class="form-control">
+                <option value="9">Murder</option>
+                <option value="8">Kidnapping</option>
+                <option value="7">Economic Offences</option>
+                <option value="6">Cyber Crimes</option>
+                <option value="5">Crime against women</option>
+                <option value="4">Crime against children</option>
+                <option value="3">Crime against Senior Citizen</option>
+                <option value="2">Crime against ST</option>
+                <option value="1">Crime against SC</option>
+                <option value="0">Crime Committed by Juveniles</option>
+            </select>
+
+            <label class="text-light">Select Year</label>
+            <select name="year" class="form-control">
+                <option value="10">2024</option>
+                <option value="9">2023</option>
+                <option value="8">2022</option>
+                <option value="7">2021</option>
+                <option value="6">2020</option>
+                <option value="5">2019</option>
+                <option value="4">2018</option>
+                <option value="3">2017</option>
+                <option value="2">2016</option>
+                <option value="1">2015</option>
+                <option value="0">2014</option>
+            </select>
+
+            <div class="mt-3">
+                <input type="submit" class="btn btn-primary" id="predict_button" value="Predict">
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <h3>Developed By: Madhav Lakhotia</h3>
+        <div class="d-flex justify-content-center mt-3">
+            <a href="https://www.linkedin.com/in/madhav-lakhotia-5b43b432a/" target="_blank">
+                <img src="static/images/linkedin.png" alt="LinkedIn" width="37">
+            </a>
+            <a href="mailto:predictcrimetrend@gmail.com" target="_blank" class="ms-3">
+                <img src="static/images/gmail.png" alt="Gmail" width="40">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menuDropdown");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
