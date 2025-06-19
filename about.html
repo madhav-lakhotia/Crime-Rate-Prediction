@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Crime Rate Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('/static/images/bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color: rgba(242, 31, 31, 0.929);
+            padding: 50px;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.463);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ffcc00;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background: #3d313194;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #b52b27;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>About Crime Rate Prediction</h1>
+        <p>
+            Prevention is better than cure. Preventing a crime from occurring is far better than investigating what happened. Just like vaccination protects a child from diseases, in today's world with rising crime rates, we need proactive systems to prevent crimes before they occur.
+        </p>
+        <p>
+            Crime prevention involves educating people, raising awareness, improving policing methods, and implementing deterrent techniques. Crime prediction relies on historical data, geospatial patterns, and demographic details to analyze where crimes are likely to happen.
+        </p>
+        <p>
+            Crime rate prediction is a crucial tool for law enforcement agencies. By predicting future crime trends, authorities can allocate resources efficiently, reduce crime rates, and enhance public safety. Additionally, it helps develop better strategies to respond to criminal activities.
+        </p>
+        <p>
+            The dataset for this project is based on publications from the Indian National Crime Records Bureau (NCRB). It contains crime statistics from 19 metropolitan cities between 2014 and 2021. With this system, we can predict crime trends across 10 major crime categories, including murder, kidnapping, cybercrimes, crimes against women and children, and economic offenses.
+        </p>
+        <p>
+            This project aims to revolutionize crime prevention strategies using data-driven insights, ultimately leading to safer communities and more effective law enforcement practices.
+        </p>
+        <a href="{{ url_for('index') }}" class="btn">Go to Main Site</a>
+
+    </div>
+</body>
+</html>
