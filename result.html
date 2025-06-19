@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDICT CRIME TREND</title>
+    <link rel="icon" href="static/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="static/styles.css">
+
+    <style>
+        /* Basic Page Styling */
+        body {
+            font-family: 'Georgia', serif;
+            background: url('static/images/stars.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: white; /* Default text color */
+        }
+
+        header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 18px;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* Prediction Box */
+        .prediction {
+            background: rgba(28, 27, 27, 0.589); /* Dark background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.168);
+        }
+
+        /* Table Styling */
+        .table2, .table3 {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .table2 td, .table3 td {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .label {
+            color: #f8f9fa; /* Light gray text */
+            font-weight: bold;
+        }
+
+        .result {
+            font-weight: bold;
+            color: #ffc107; /* Yellow highlight */
+        }
+
+        /* Dropdown Styling */
+        select {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+
+        /* Button Styling */
+        .btn {
+            background-color: #ffc107;
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #ff9800;
+        }
+
+        .logout-btn {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logout-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons img {
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="title">PREDICT CRIME TREND</h1>
+        <h2 class="tagline">Unlock safety: Reduce crime rate together for upcoming</h2>
+    </header>
+
+    <section class="prediction">
+        <table class="table2">
+            <tbody>
+                <tr class="r2">
+                    <td class="label">
+                        <label>Selected City Name :</label>
+                    </td>
+                    <td class="sel">
+                        <select>
+                            <option value="selected">{{city_name}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="r1">
+                    <td class="label">
+                        <label>Selected Crime Type :</label>
+                    </td>
+                    <td class="sel">
+                        <select>
+                            <option value="selected">{{crime_type}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="r1">
+                    <td class="label">
+                        <label>Selected Year :</label>
+                    </td>
+                    <td class="sel">
+                        <select>
+                            <option value="selected">{{year}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table3">         
+            <tbody>
+                <tr class="r2"> 
+                    <td class="result">Prediction :- </td>
+                    <td class="result">{{crime_status}}</td>
+                </tr>
+                <tr class="r2">
+                    <td class="result">Estimated Crime Rate :- </td>
+                    <td class="result">{{crime_rate}}</td>
+                </tr>
+                <tr class="r2">
+                    <td class="result">Estimated Number of Cases :-</td>
+                    <td class="result">{{cases}}</td>
+                </tr>
+                <tr class="r2">
+                    <td class="result">Population (in Lakhs) :-</td>
+                    <td class="result">{{population}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="button2">
+            <a href="{{ url_for('index') }}">
+                <input type="submit" class="btn" id="check_again" value="Let's Check Again">
+            </a>            
+        </div> 
+
+        <!-- Logout Button -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div id="developer">
+                <h3>Developed by : Madhav Lakhotia</h3>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="mailto:predictcrimetrend@gmail.com">Support</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <div id="linkedin">
+                    <a href="https://www.linkedin.com/in/madhav-lakhotia-5b43b432a" target="_blank">
+                        <img src="static/images/linkedin.png" alt="linkedIn" width="37">                
+                    </a>  
+                </div>
+                <div id="Gmail">
+                    <a href="mailto:predictcrimetrend@gmail.com" target="_blank">
+                        <img src="static/images/gmail.png" alt="Gmail" width="40">
+                    </a>
+                </div>
+            </div>
+        </div>      
+    </footer>
+</body>
+</html>

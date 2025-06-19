@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Crime Predictor</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        /* Background with Animated Cyberpunk GIF */
+        body {
+            background: url('static/images/login.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Register Container */
+        .register-container {
+            background: rgba(10, 9, 9, 0.611);
+            padding: 30px;
+            width: 350px; /* Same as Login */
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h2 {
+            color: red;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Input Fields */
+        input[type="email"], .password-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 0, 0, 0.2);
+            color: rgb(255, 255, 255);
+        }
+
+        /* Password Field with Eye Icon */
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-container input {
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Button */
+        .btn {
+            background: red;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: darkred;
+        }
+
+        /* Login Link */
+        .login-link {
+            margin-top: 10px;
+            display: block;
+            color: red;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Enter Full Name" required>
+            <input type="email" name="email" placeholder="Enter Gmail" required>
+
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                <img src="static/images/eye.png" id="togglePassword" class="toggle-password" width="25px" alt="Show Password">
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+        
+        <a href="{{ url_for('login') }}" class="login-link">Already have an account? Login</a>
+    </div>
+
+    <script>
+        const passwordField = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+
+        togglePassword.addEventListener("click", function () {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                togglePassword.src = "static/images/eye-off.png"; // Change icon when visible
+            } else {
+                passwordField.type = "password";
+                togglePassword.src = "static/images/eye.png"; // Change back to hidden
+            }
+        });
+    </script>
+</body>
+</html>
