@@ -1,0 +1,35 @@
+<!-- blogs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .blog { background: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 15px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        form { margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; }
+        button { background: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Page</h1>
+        <form action="/add_blog" method="POST">
+            <input type="text" name="title" placeholder="Blog Title" required>
+            <textarea name="content" placeholder="Write your blog here..." required></textarea>
+            <button type="submit">Post Blog</button>
+        </form>
+        
+        {% for blog in blogs %}
+        <div class="blog">
+            <h2>{{ blog[1] }}</h2>
+            <p>{{ blog[2] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
